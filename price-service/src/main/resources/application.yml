@@ -1,0 +1,11 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: price-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:811/eureka/
