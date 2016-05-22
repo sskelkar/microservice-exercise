@@ -1,11 +1,11 @@
 buildscript {
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}") 
-		classpath("io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE")
-	}
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}") 
+    classpath("io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE")
+  }
 }
 
 apply plugin: 'java'
@@ -14,8 +14,8 @@ apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
 
 jar {
-	baseName = 'product-catalogue-service'
-	version = '0.0.1-SNAPSHOT'
+  baseName = 'product-catalogue-service'
+  version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -24,20 +24,20 @@ repositories {
   mavenCentral()
   maven { url 'http://repo.spring.io/milestone' }
   maven { url 'http://repo.spring.io/snapshot' }
-  maven { url 'http://repo.spring.io/release' }	
+  maven { url 'http://repo.spring.io/release' } 
 }
 
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter:${spring_boot_version}")
-	compile("org.springframework.boot:spring-boot-starter-web:${spring_boot_version}")
-	compile("org.springframework.boot:spring-boot-starter-data-jpa:${spring_boot_version}")
-	compile files('./lib/ojdbc6.jar')
-	compile("org.springframework.cloud:spring-cloud-starter-eureka")	
-	compile("org.springframework.cloud:spring-cloud-starter-feign")
-	compile("org.springframework.cloud:spring-cloud-starter-hystrix")
-	
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+  compile("org.springframework.boot:spring-boot-starter:${spring_boot_version}")
+  compile("org.springframework.boot:spring-boot-starter-web:${spring_boot_version}")
+  compile("org.springframework.boot:spring-boot-starter-data-jpa:${spring_boot_version}")
+  compile files('./lib/ojdbc6.jar')
+  compile("org.springframework.cloud:spring-cloud-starter-eureka")  
+  compile("org.springframework.cloud:spring-cloud-starter-feign")
+  compile("org.springframework.cloud:spring-cloud-starter-hystrix")
+  
+  testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
 
 dependencyManagement {
@@ -47,8 +47,8 @@ dependencyManagement {
 }
 
 eclipse {
-	classpath {
-		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-	}
+  classpath {
+     containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+     containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+  }
 }
