@@ -33,10 +33,11 @@ public class Product {
 	@Transient
 	private Price price;
 	
-	public Product(Long id, String name, ProductType type) {
+	public Product(Long id, String name, ProductType type, Price price) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
+		this.price = price;
 	}
 
 	public Long getId() {
