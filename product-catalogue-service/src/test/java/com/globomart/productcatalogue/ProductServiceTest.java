@@ -1,6 +1,6 @@
 package com.globomart.productcatalogue;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -8,42 +8,67 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
+import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.globomart.productcatalogue.client.PriceClient;
-import com.globomart.productcatalogue.database.ProductRepository;
+import com.globomart.productcatalogue.domain.Price;
 import com.globomart.productcatalogue.domain.Product;
 import com.globomart.productcatalogue.domain.ProductType;
+import com.globomart.productcatalogue.repository.ProductRepository;
 import com.globomart.productcatalogue.service.ProductService;
+import com.globomart.productcatalogue.service.price.PriceServiceHandler;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductServiceTest {
 
 	@Mock
 	private ProductRepository productRepository;
+	
 	@Mock
-	private PriceClient	priceClient;
+	private PriceServiceHandler	priceServiceHandler;
 	
 	@InjectMocks
 	private ProductService productService;
 	
-	private List<Product> dummyProducts = new ArrayList<>();
+	private Product GARMENT_1 = new Product(1L, "Jeans", ProductType.GARMENTS, new Price(10.0, null));
+	private Product ELECTRONIC_1 = new Product(1L, "Stereo", ProductType.ELECTRONICS, new Price(10.0, null));
+	private Product ELECTRONIC_FRIDGE = new Product(1L, "Fridge", ProductType.ELECTRONICS, new Price(10.0, null));
+	
 	@Before
-	public void init() {
-		dummyProducts.add(new Product(1L, "example", ProductType.GARMENTS));
-		dummyProducts.add(new Product(1L, "abc", ProductType.ELECTRONIC));
-		
-		Mockito.when(productRepository.getAllProducts()).thenReturn(dummyProducts);
+	public void init() {		
+		Mockito.when(productRepository.findAll()).thenReturn(Arrays.asList(GARMENT_1, ELECTRONIC_1, ELECTRONIC_FRIDGE));
+		Mockito.when(productRepository.findOne(Matchers.anyLong())).thenReturn(GARMENT_1);
 	}
 	
 	@Test
-	public void testProductFilter() {
+	public void filterElectornicItems() {
 		Product productFilter = new Product();
-		productFilter.setType(ProductType.ELECTRONIC);
+		productFilter.setType(ProductType.ELECTRONICS);
 		
 		List<Product> filterd = productService.search(productFilter);
-		Assert.assertTrue("filter is owkring", filterd.size() == 1);
+		Assert.assertTrue("filter electronic items", filterd.size() == 2);
+		Assert.assertTrue("got electronic item 1", filterd.contains(ELECTRONIC_1));
+		Assert.assertTrue("got electronic item 2", filterd.contains(ELECTRONIC_FRIDGE));
+	}
+	
+	@Test
+  public void filterGarmentsAndFridge() {
+    Product productFilter = new Product();
+    productFilter.setType(ProductType.GARMENTS);
+    productFilter.setName("Fridge");
+    
+    List<Product> filterd = productService.search(productFilter);
+    Assert.assertTrue("filter garments and items named 'Fridge'", filterd.size() == 2);   
+    Assert.assertTrue("got garment", filterd.contains(GARMENT_1));
+    Assert.assertTrue("got fridge", filterd.contains(ELECTRONIC_FRIDGE));
+  }
+	
+	@Test
+	public void getProductById() {
+	  Product product = productService.getById(1L);
+	  
+	  Assert.assertTrue("get product with id 1", product.getId() == 1L);
 	}
 }
