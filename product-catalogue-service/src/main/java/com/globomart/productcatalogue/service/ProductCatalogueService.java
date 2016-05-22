@@ -17,7 +17,7 @@ import com.globomart.productcatalogue.service.price.PriceServiceHandler;
  * @author S.Kelkar
  */
 @Service
-public class ProductService {
+public class ProductCatalogueService {
 
 	@Autowired
 	private ProductRepository productRepository;

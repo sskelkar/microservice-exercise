@@ -17,11 +17,11 @@ import com.globomart.productcatalogue.domain.Price;
 import com.globomart.productcatalogue.domain.Product;
 import com.globomart.productcatalogue.domain.ProductType;
 import com.globomart.productcatalogue.repository.ProductRepository;
-import com.globomart.productcatalogue.service.ProductService;
+import com.globomart.productcatalogue.service.ProductCatalogueService;
 import com.globomart.productcatalogue.service.price.PriceServiceHandler;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ProductServiceTest {
+public class ProductCatalogueServiceTest {
 
 	@Mock
 	private ProductRepository productRepository;
@@ -30,7 +30,7 @@ public class ProductServiceTest {
 	private PriceServiceHandler	priceServiceHandler;
 	
 	@InjectMocks
-	private ProductService productService;
+	private ProductCatalogueService productService;
 	
 	private Product GARMENT_1 = new Product(1L, "Jeans", ProductType.GARMENTS, new Price(10.0, null));
 	private Product ELECTRONIC_1 = new Product(1L, "Stereo", ProductType.ELECTRONICS, new Price(10.0, null));

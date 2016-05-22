@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.globomart.productcatalogue.domain.Product;
-import com.globomart.productcatalogue.service.ProductService;
+import com.globomart.productcatalogue.service.ProductCatalogueService;
 
 @RestController
 @RequestMapping("/product")
 public class ProductCatalogueController {
 
 	@Autowired
-	private ProductService productService;
+	private ProductCatalogueService productService;
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public void addProduct(@RequestBody Product product) {
