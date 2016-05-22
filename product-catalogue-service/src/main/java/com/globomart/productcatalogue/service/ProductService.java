@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.globomart.productcatalogue.client.PriceClient;
-import com.globomart.productcatalogue.database.ProductRepository;
 import com.globomart.productcatalogue.domain.Product;
+import com.globomart.productcatalogue.repository.ProductRepository;
 
 @Service
 public class ProductService {
@@ -21,7 +21,7 @@ public class ProductService {
 	private PriceClient priceClient;
 	
 	public void addProduct(Product product) {
-		productRepository.add(product);
+		productRepository.save(product);
 	}
 	
 	public void deleteProduct(Long productId) {
@@ -29,24 +29,17 @@ public class ProductService {
 	}
 	
 	public List<Product> getAllProducts() {
-		List<Product> products = productRepository.getAllProducts();
+		List<Product> products = productRepository.findAll();
 		
 		for(Product product : products) {
-			product.setPrice(priceClient.getPriceForProduct(product.getId()));
+//			product.setPrice(priceClient.getPriceForProduct(product.getId()));
 		}
 		
 		return products;
 	}
 	
 	public Product getById(Long id) {
-		Iterator<Product> it = getAllProducts().iterator();
-		while(it.hasNext()) {
-			Product curr = it.next();
-			if(curr.getId() == id) {
-				return curr;
-			}
-		}
-		return null;
+		return productRepository.findOne(id);
 	}
 	
 	public List<Product> search(Product productFilter) {
