@@ -47,6 +47,5 @@ public class Price {
 	}
 	public void setValue(Double value) {
 		this.value = value;
-	}
-	
+	}	
 }
