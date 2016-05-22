@@ -1,27 +1,38 @@
 package com.globomart.productcatalogue.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="product")
 public class Product {
 
+  @Id
+  @Column(name = "product_id")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
+  @SequenceGenerator(name = "seq_product", sequenceName = "seq_product", allocationSize = 1)
 	private Long id;
 	
 	private String name;
 	
+	@Enumerated(EnumType.STRING)
 	private ProductType type;
-
-	private Price price;
 	
-	public Product() {}
+	public Product() {
+	  // default constructor
+	}
+	
 	public Product(Long id, String name, ProductType type) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
-	}
-	public Price getPrice() {
-		return price;
-	}
-
-	public void setPrice(Price price) {
-		this.price = price;
 	}
 
 	public Long getId() {

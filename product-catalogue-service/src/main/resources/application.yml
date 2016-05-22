@@ -4,7 +4,12 @@ server:
 spring:
   application:
     name: price-catalogue-service
-
+  datasource:
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//192.168.100.100:1521/nwi
+    username: mis_kopie
+    password: mis_kopie
+    
 eureka:
   client:
     serviceUrl:
