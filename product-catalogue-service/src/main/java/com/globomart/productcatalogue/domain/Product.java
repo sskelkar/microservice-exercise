@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="product")
@@ -28,6 +29,9 @@ public class Product {
 	public Product() {
 	  // default constructor
 	}
+	
+	@Transient
+	private Price price;
 	
 	public Product(Long id, String name, ProductType type) {
 		this.id = id;
@@ -58,6 +62,14 @@ public class Product {
 	public void setType(ProductType type) {
 		this.type = type;
 	}
+
+  public Price getPrice() {
+    return price;
+  }
+
+  public void setPrice(Price price) {
+    this.price = price;
+  }
 	
 	
 }
