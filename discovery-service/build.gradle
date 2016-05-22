@@ -22,19 +22,21 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+  mavenCentral()
+  maven { url 'http://repo.spring.io/milestone' }
+  maven { url 'http://repo.spring.io/snapshot' }
+  maven { url 'http://repo.spring.io/release' }	
 }
 
 
 dependencies {
-	compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+	compile("org.springframework.cloud:spring-cloud-starter-eureka-server")	
+	testCompile("org.springframework.boot:spring-boot-starter-test:${spring_boot_version}") 
 }
 
 dependencyManagement {
 	imports { 
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.RELEASE" 
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${spring_cloud_version}" 
 	}
 }
 

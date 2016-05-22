@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: price-catalogue-service
+    name: product-catalogue-service
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@//192.168.100.100:1521/nwi
@@ -14,3 +14,12 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:811/eureka/
+      
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+     
