@@ -2,11 +2,11 @@ package com.globomart.price.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.globomart.price.domain.Price;
@@ -19,8 +19,8 @@ public class PriceController {
 	@Autowired
 	private PriceService priceService;
 	
-	@RequestMapping(path="/product", method = RequestMethod.GET)
-	public Price getPriceForProduct(@RequestParam("id") Long productId) {
+	@RequestMapping(path="/product/{productId}", method = RequestMethod.GET)
+	public Price getPriceForProduct(@PathParam("productId") Long productId) {
 		return priceService.getPriceByProductId(productId);
 	}
 	
