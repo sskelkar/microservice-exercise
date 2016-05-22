@@ -1,0 +1,1 @@
+include 'discovery-service', 'price-service', 'product-catalogue-service'
