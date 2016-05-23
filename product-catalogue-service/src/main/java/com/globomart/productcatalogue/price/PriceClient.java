@@ -1,4 +1,4 @@
-package com.globomart.productcatalogue.client;
+package com.globomart.productcatalogue.price;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +13,7 @@ import com.globomart.productcatalogue.domain.Price;
  * @author S.Kelkar
  */
 @FeignClient("PRICE-SERVICE")
-public interface PriceClient {
+/*default*/ interface PriceClient {
 
 	@RequestMapping(path="/price/product/{productId}", method = RequestMethod.GET)
 	public Price getPriceForProduct(@PathVariable("productId") Long productId);

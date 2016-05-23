@@ -1,4 +1,4 @@
-package com.globomart.productcatalogue;
+package com.globomart.productcatalogue.service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,9 +16,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.globomart.productcatalogue.domain.Price;
 import com.globomart.productcatalogue.domain.Product;
 import com.globomart.productcatalogue.domain.ProductType;
+import com.globomart.productcatalogue.price.PriceServiceHandler;
 import com.globomart.productcatalogue.repository.ProductRepository;
-import com.globomart.productcatalogue.service.ProductCatalogueService;
-import com.globomart.productcatalogue.service.price.PriceServiceHandler;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductCatalogueServiceTest {

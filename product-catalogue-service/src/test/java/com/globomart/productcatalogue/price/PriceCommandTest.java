@@ -1,4 +1,4 @@
-package com.globomart.productcatalogue.service.price;
+package com.globomart.productcatalogue.price;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.globomart.productcatalogue.client.PriceClient;
 import com.globomart.productcatalogue.domain.Price;
 
 
