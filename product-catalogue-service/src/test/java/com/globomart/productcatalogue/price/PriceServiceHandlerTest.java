@@ -1,4 +1,4 @@
-package com.globomart.productcatalogue.service.price;
+package com.globomart.productcatalogue.price;
 
 import org.junit.Assert;
 import org.junit.Test;

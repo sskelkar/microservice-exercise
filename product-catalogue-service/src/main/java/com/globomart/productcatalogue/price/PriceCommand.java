@@ -1,6 +1,5 @@
-package com.globomart.productcatalogue.service.price;
+package com.globomart.productcatalogue.price;
 
-import com.globomart.productcatalogue.client.PriceClient;
 import com.globomart.productcatalogue.domain.Price;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;

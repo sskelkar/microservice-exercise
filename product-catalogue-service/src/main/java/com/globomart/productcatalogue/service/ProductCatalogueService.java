@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.globomart.productcatalogue.domain.Product;
+import com.globomart.productcatalogue.price.PriceServiceHandler;
 import com.globomart.productcatalogue.repository.ProductRepository;
-import com.globomart.productcatalogue.service.price.PriceServiceHandler;
 
 /**
  * Service class to hold business logic related to products.

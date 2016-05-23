@@ -1,4 +1,4 @@
-package com.globomart.productcatalogue.service.price;
+package com.globomart.productcatalogue.price;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
