@@ -49,10 +49,9 @@ public class ProductCatalogueService {
 	public List<Product> getAllProducts() {
 		List<Product> products = productRepository.findAll();
 		
-		for(Product product : products) {		  
-		  product.setPrice(priceServiceHandler.getPrice(product.getId()));
+		for(Product product : products) {     
+		  product.setPrice(priceServiceHandler.getPrice(product.getId()));      
 		}
-		
 		return products;
 	}
 	

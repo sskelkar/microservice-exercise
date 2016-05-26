@@ -24,6 +24,7 @@ public class PriceServiceHandler {
    */
   public Price getPrice(Long productId) {
     PriceCommand priceCommand = priceCommandBuilder.createPriceCommand().setProductId(productId).build();
+    System.out.println("is circuit open? : "+priceCommand.isCircuitBreakerOpen());
     return priceCommand.execute();
   }
 }

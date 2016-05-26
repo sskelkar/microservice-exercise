@@ -32,8 +32,8 @@ public class ProductCatalogueServiceTest {
 	private ProductCatalogueService productService;
 	
 	private Product GARMENT_1 = new Product(1L, "Jeans", ProductType.GARMENTS, new Price(10.0, null));
-	private Product ELECTRONIC_1 = new Product(1L, "Stereo", ProductType.ELECTRONICS, new Price(10.0, null));
-	private Product ELECTRONIC_FRIDGE = new Product(1L, "Fridge", ProductType.ELECTRONICS, new Price(10.0, null));
+	private Product ELECTRONIC_1 = new Product(2L, "Stereo", ProductType.ELECTRONICS, new Price(10.0, null));
+	private Product ELECTRONIC_FRIDGE = new Product(3L, "Fridge", ProductType.ELECTRONICS, new Price(10.0, null));
 	
 	@Before
 	public void init() {		

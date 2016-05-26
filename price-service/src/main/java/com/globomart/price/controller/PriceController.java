@@ -20,6 +20,13 @@ public class PriceController {
 	
 	@RequestMapping(path="/product/{productId}", method = RequestMethod.GET)
 	public Price getPriceForProduct(@PathVariable("productId") Long productId) {
+	  
+	  // following block is to simulate failure condition, in order to demonstrate open/close states of Hystrix circuit
+	  {
+	    if(Math.random() > 0.5)
+	      throw new RuntimeException();
+	  }
+	  
 		return priceService.getPriceByProductId(productId);
 	}
 	
